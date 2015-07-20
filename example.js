@@ -2,7 +2,7 @@
 
 var treegen = require('./index');
 
-var tree = treegen(2, 10);
+var tree = treegen(2, 4);
 var targetFile = './example.json';
 
 
