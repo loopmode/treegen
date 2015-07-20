@@ -1,7 +1,9 @@
 'use strict';
 var faker = require('faker');
 
-function createTree(spread, depth, nameGen, dataGen, currentDepth) {
+var numObjs = 0;
+
+function createTree(depth, spread, nameGen, dataGen, currentDepth) {
     currentDepth = currentDepth === undefined ? 0 : currentDepth;
 
     var node = {
@@ -10,18 +12,21 @@ function createTree(spread, depth, nameGen, dataGen, currentDepth) {
         children: []
     };
 
+    numObjs++;
+
     if (currentDepth < depth) {
         for (var i = 0; i < spread; i++) {
-            node.children.push(createTree(spread, depth, nameGen, dataGen, currentDepth + 1));
+            node.children.push(createTree(depth, spread, nameGen, dataGen, currentDepth + 1));
         }
+    } else {
+        console.log(numObjs, 'objects');
     }
-
     return node;
 }
 
 
 
-module.exports = function(spread, depth, nameGen, dataGen) {
+module.exports = function(depth, spread, nameGen, dataGen) {
 
     nameGen = nameGen || function() {
         return faker.name.findName();
@@ -35,5 +40,5 @@ module.exports = function(spread, depth, nameGen, dataGen) {
         };
     };
 
-    return createTree(spread, depth, nameGen, dataGen);
+    return createTree(depth, spread, nameGen, dataGen);
 };
