@@ -3,8 +3,8 @@ Javascript random tree data generator
 
 ## usage
 
-The module exports a generator function with two required params: `depth` and `spread`, bot should be integer numbers.
-It will create a tree of objects that all contain 'name', 'data' and 'children' fields.  
+The module exports a generator function with two required params: `depth` and `spread`, and both should be integer numbers.
+The function will create a tree of objects that contain `name` (string), `data` (object) and `children` (array) properties.  
 You can specify two additional, optional params in order to control the kind of data that is generated: `nameGen` and `dataGen`, both of type `Function`.
 If you do not specify the generator functions, `faker.js` will be used to create some dummy data:
 
