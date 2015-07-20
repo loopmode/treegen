@@ -96,3 +96,5 @@ When specifying generator functions, the name generator should return a string, 
 			]
 		}
 		*/
+
+TODO: Figure out mathematical formula for predicting number of created objects, just for the readme. Should be some power or faculty between spread and depth, right?
