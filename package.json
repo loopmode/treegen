@@ -1,0 +1,14 @@
+{
+  "name": "treegen",
+  "version": "0.0.1",
+  "description": "Generates hierarchical data with random values",
+  "main": "index.js",
+  "scripts": {
+    "start": "node example.js"
+  },
+  "author": "Jovica Aleksic",
+  "license": "",
+  "dependencies": {
+    "faker": "^3.0.0"
+  }
+}
