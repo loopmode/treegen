@@ -1,4 +1,3 @@
-require('babel/register');
 var faker = require('faker');
 
 function createTree(args, currentDepth) {
