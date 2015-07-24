@@ -1,44 +1,38 @@
-'use strict';
+require('babel/register');
 var faker = require('faker');
 
-var numObjs = 0;
-
-function createTree(depth, spread, nameGen, dataGen, currentDepth) {
+function createTree(args, currentDepth) {
     currentDepth = currentDepth === undefined ? 0 : currentDepth;
 
     var node = {
-        name: nameGen(),
-        data: dataGen(),
+        name: args.name(),
+        data: args.data(),
         children: []
     };
 
-    numObjs++;
-
-    if (currentDepth < depth) {
-        for (var i = 0; i < spread; i++) {
-            node.children.push(createTree(depth, spread, nameGen, dataGen, currentDepth + 1));
+    if (currentDepth < args.depth) {
+        for (var i = 0; i < args.spread; i++) {
+            node.children.push(createTree(args, currentDepth + 1));
         }
-    } else {
-        console.log(numObjs, 'objects');
     }
     return node;
 }
 
 
 
-module.exports = function(depth, spread, nameGen, dataGen) {
-
-    nameGen = nameGen || function() {
+module.exports = function(args) {
+    args.depth = args.depth === undefined ? 1 : args.depth;
+    args.spread = args.spread === undefined ? 1 : args.spread;
+    args.name = args.name || function() {
         return faker.name.findName();
     };
 
-    dataGen = dataGen || function() {
+    args.data = args.data || function() {
         return {
             'user': faker.internet.userName(),
             'host': faker.internet.domainName(),
             'city': faker.address.city()
         };
     };
-
-    return createTree(depth, spread, nameGen, dataGen);
+    return createTree(args);
 };

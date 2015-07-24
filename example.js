@@ -2,18 +2,7 @@
 
 var treegen = require('./index');
 
-
-function generateObjectName() {
-    return 'myObjectName';
-}
-
-function generateObjectData() {
-    return {
-        foo: 'bar'
-    };
-}
-
-var tree = treegen(1, 3, generateObjectName, generateObjectData);
+var tree = treegen({depth: 2, spread: 3});
 var targetFile = './example.json';
 
 var fs = require('fs');
