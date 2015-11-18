@@ -1,5 +1,5 @@
 # treegen
-Javascript random tree data generator
+Generates random tree data using https://github.com/Marak/Faker.js
 
 ## usage
 
